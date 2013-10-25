@@ -11,7 +11,7 @@ If you are not using Sublime Package Control, please follow these instructions:
 1. Open Sublime Text 2
 2. Select "Sublime => Preferences => Browse Packages…"
 3. A Finder window appears showing your installed packages
-4. Copy the folder "Ulysses Style Sheet" into the "Packages" folder
+4. Copy this repository into the "Packages" folder
 
 Known Limitations
 -----------------
