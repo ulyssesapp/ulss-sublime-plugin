@@ -1,30 +1,33 @@
-Sublime Text 2 Plugin for Ulysses Style Sheets
-==============================================
-This repository contains provides a plugin for syntax highlighting and autocompletion of [Ulysses Style Sheets](http://www.ulyssesapp.com/styles) in Sublime Text 2.
+[![GitHub license](https://img.shields.io/github/license/soulmen/ulss-sublime-plugin.svg?style=flat-square)](https://github.com/soulmen/ulss-sublime-plugin/tree/master/LICENSE.md)
+[![Total downloads via Package Control](https://img.shields.io/packagecontrol/dt/Ulysses%20Style%20Sheets.svg?style=flat-square)](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets)
+[![Monthly downloads via Package Control](https://img.shields.io/packagecontrol/dm/Ulysses%20Style%20Sheets.svg?style=flat-square)](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets)
 
-You may either download it directly or use the [Sublime Package Control](https://sublime.wbond.net).
+# [Sublime Text 2](https://www.sublimetext.com/2) Plugin for [Ulysses Style Sheets](http://www.ulyssesapp.com/styles)
 
-Installation instructions
--------------------------
-If you are not using Sublime Package Control, please follow these instructions:
+This repository contains provides the [Ulysses Style Sheets](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets) plugin for syntax highlighting and autocompletion of [Ulysses Style Sheets](http://www.ulyssesapp.com/styles) in [Sublime Text 2](https://www.sublimetext.com/2).
 
-1. Open Sublime Text 2
-2. Select "Sublime => Preferences => Browse Packages…"
-3. A Finder window appears showing your installed packages
-4. Copy this repository into the "Packages" folder
+You may either download it directly or find it as the [`Ulysses Style Sheets`](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets) package on [Package Control](https://packagecontrol.io).
 
-Known Limitations
------------------
-This plugin has only limited support for recent beta versions of Sublime Text 3.
+## Installation
 
-License
--------
-The Ulysses Style Sheet Plugin for Sublime Text 2 is licensed under the MIT license.
+:warning: Be aware of the [known limitations](#known-limitations).
 
-Copyright (C) 2013 by The Soulmen GbR <mail@the-soulmen.com>
+If you are not using [Package Control](https://packagecontrol.io), please follow these instructions:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+1. Open [Sublime Text 2](https://www.sublimetext.com/2).
+2. Select `Sublime => Preferences => Browse Packages …`
+3. A Finder window appears showing your installed packages.
+4. Copy this repository into the `Packages` folder.
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+## Known Limitations
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+| Sublime Text version                                   |     Compatibility    |
+|--------------------------------------------------------|----------------------|
+| [Sublime Text 2](https://www.sublimetext.com/2)        | :o: fully compatible |
+| [Sublime Text 2 dev](https://www.sublimetext.com/dev)  | :o: fully compatible |
+| [Sublime Text 3](https://www.sublimetext.com/3)        | :x: limited support  |
+| [Sublime Text 3 dev](https://www.sublimetext.com/3dev) | :x: limited support  |
+
+## License
+
+The [Ulysses Style Sheet](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets) Plugin for [Sublime Text 2](https://www.sublimetext.com/2) is licensed under the MIT license, see [`LICENSE.md`](LICENSE.md) for details.
