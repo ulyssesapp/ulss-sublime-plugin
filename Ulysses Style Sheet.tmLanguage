@@ -6,8 +6,6 @@
 	<string>Ulysses Style Sheet</string>
 	<key>scopeName</key>
 	<string>source.ulss</string>
-	<key>uuid</key>
-	<string>5FF98CBA-892D-4B93-8F14-C87AB194606A</string>
 	<key>fileTypes</key>
 	<array>
 		<string>ulss</string>
