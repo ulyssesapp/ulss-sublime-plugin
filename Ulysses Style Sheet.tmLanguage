@@ -36,7 +36,7 @@
 					<key>end</key>
 					<string>\*/</string>
 					<key>name</key>
-					<string>invalid.comment.block.ulss</string>
+					<string>invalid.unimplemented.comment.block.ulss</string>
 				</dict>
 			</array>
 		</dict>
