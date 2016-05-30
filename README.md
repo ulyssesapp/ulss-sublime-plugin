@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/soulmen/ulss-sublime-plugin.svg?style=flat-square)](https://github.com/soulmen/ulss-sublime-plugin/tree/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/soulmen/ulss-sublime-plugin.svg?style=flat-square)](LICENSE.md)
 [![Total downloads via Package Control](https://img.shields.io/packagecontrol/dt/Ulysses%20Style%20Sheets.svg?style=flat-square)](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets)
 [![Monthly downloads via Package Control](https://img.shields.io/packagecontrol/dm/Ulysses%20Style%20Sheets.svg?style=flat-square)](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets)
 
