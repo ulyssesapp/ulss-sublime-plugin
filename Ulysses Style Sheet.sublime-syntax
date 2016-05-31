@@ -1,0 +1,152 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: 'Ulysses Style Sheet'
+comment: 'https://www.ulyssesapp.com'
+hidden: false
+file_extensions:
+  - ulss
+scope: source.ulss
+contexts:
+  main:
+    - include: comment
+    - include: selector
+    - include: style-definition
+    - include: variable-definition
+  comment:
+    - match: '//'
+      push:
+        - meta_scope: comment.line.double-slash.ulss
+        - match: '$'
+          pop: true
+    - match: '/\*'
+      comment: 'Multi-line comments are currently unsupported.'
+      push:
+        - meta_scope: invalid.unimplemented.comment.block.ulss
+        - match: '\*/'
+          pop: true
+  array-value:
+    - match: '\['
+      scope: punctuation.definition.array.begin.json
+      push:
+        - meta_scope: meta.structure.array.ulss
+        - match: '\]'
+          scope: punctuation.definition.array.end.json
+          pop: true
+        - include: expression
+        - match: ','
+          scope: punctuation.separator.array.ulss
+        - match: '[^\s\]]'
+          scope: invalid.illegal.expected-array-separator.ulss
+  boolean-value:
+    - match: '\b(yes|Yes|YES|true|True|TRUE|no|NO|No|false|FALSE|False)\b'
+      scope: constant.language.ulss
+  color-value:
+    - match: '\#[a-f0-9A-F]{6}'
+      scope: constant.other.color.rgb-value.ulss
+    - match: '(rgb)\s*(\()'
+      captures:
+        1: support.function.misc.ulss
+        2: punctuation.section.function.ulss
+      push:
+        - match: '(\))'
+          captures:
+            1: punctuation.section.function.ulss
+          pop: true
+        - match: '(0|(?:[1-9][0-9]{0,2}))\s*(,)\s*(0|(?:[1-9][0-9]{0,2}))\s*(,)\s*(0|(?:[1-9][0-9]{0,2}))\s*'
+          captures:
+            1: constant.other.color.rgb-value.ulss
+            3: constant.other.color.rgb-value.ulss
+            5: constant.other.color.rgb-value.ulss
+  expression:
+    - include: comment
+    - match: '[\+\-\*\/\(\)]'
+      scope: keyword.operator.ulss
+    - include: variable-identifier
+    - include: color-value
+    - include: boolean-value
+    - include: symbolic-value
+    - include: array-value
+    - include: string-value
+    - include: length-value
+    - include: numeric-value
+  length-value:
+    - match: '\b(0|-?[1-9][0-9]*)(\.[0-9]+)?(pt|em|ex|en|mm|cm|in|%)\b'
+      scope: constant.numeric.ulss
+  numeric-value:
+    - match: '\b(0|-?[1-9][0-9]*)(\.[0-9]+)?\b'
+      scope: constant.numeric.ulss
+  selector:
+    - match: '(?=[@*:a-zA-Z\+\>])'
+      push:
+        - meta_scope: meta.selector.ulss
+        - match: '(?=(\s|[/{]))'
+          pop: true
+        - match: '[\+\>]'
+          scope: keyword.operator.ulss
+        - match: '\b(ulysses-whitespace|ulysses-tag|ulysses-escape-character|ulysses-escape|paragraph-filename|paragraph-figure|paragraph-divider|paragraph|media-image|list-unordered|list-ordered|list-all|inline-strong|inline-raw|inline-mark|inline-link|inline-footnote|inline-emphasis|inline-delete|inline-comment|inline-code|inline-citation|inline-annotation|heading-all|heading-[1-6]|document-settings|defaults|block-raw|block-quote|block-comment|block-code|block-all|area-header|area-footnotes|area-footer)\b'
+          scope: entity.name.tag.ulss
+        - match: '\*'
+          scope: entity.name.tag.wildcard.ulss
+        - match: '\@[-a-zA-Z0-9]*'
+          scope: entity.name.function.ulss
+        - match: '\:\s*\@[-a-zA-Z0-9]*'
+          scope: entity.other.inherited-class.ulss
+        - match: '\:(right-page|left-page|last|first-page|first|enumerator|anchor)'
+          scope: entity.other.attribute-name.pseudo-class
+  setting-identifier:
+    - match: '(?<![-a-z])(?=[-a-z])'
+      push:
+        - meta_scope: meta.property-name.ulss
+        - match: '(?![-a-z])'
+          pop: true
+        - match: '\b(visibility|underline-color|underline|two-sided|top-spacing|text-inset|text-alignment|tab-positions|tab-alignments|style-title|strikethrough-color|strikethrough|section-break|paragraph-divider|page-width|page-orientation|page-number-style|page-number-reset|page-number-format|page-inset-top|page-inset-outer|page-inset-inner|page-inset-bottom|page-height|page-break|page-binding|orphans-and-widows|margin-top|margin-right|margin-left|margin-bottom|locale|line-spacing|line-height|keep-with-following|itemization|item-spacing|hyphenation|footnote-visibility|footnote-style|footnote-placement|footnote-enumeration|font-weight|font-style|font-slant|font-size|font-family|font-color|first-line-indent|enumeration-style|enumeration-format|divider-width|divider-spacing|divider-position|divider-length|default-tab-interval|content|column-spacing-width|column-count|character-spacing|bottom-spacing|baseline-shift|background-color|anchor-inset|anchor-alignment)\b'
+          scope: support.type.property-name.ulss
+  string-value:
+    - match: '"'
+      push:
+        - meta_scope: string.quoted.double.ulss
+        - match: '"'
+          pop: true
+        - match: '\\.'
+          scope: constant.character.escape.ulss
+  style-definition:
+    - match: '\{'
+      scope: punctuation.section.property-group.begin.ulss
+      push:
+        - meta_scope: meta.style-definition.ulss
+        - match: '\}'
+          scope: punctuation.section.property-group.end.ulss
+          pop: true
+        - include: comment
+        - match: '(?<![-a-z])(?=[-a-z])'
+          push:
+            - meta_scope: meta.setting-identifier.ulss
+            - match: '$|(?![-a-z])'
+              pop: true
+        - match: (:)\s*
+          captures:
+            1: punctuation.separator.key-value.ulss
+          push:
+            - meta_scope: meta.style-value.ulss
+            - match: '\s*(\n|;|(?=\}))'
+              captures:
+                1: punctuation.terminator.rule.ulss
+              pop: true
+            - include: expression
+  symbolic-value:
+    - match: '(yes|visible|uppercase-roman|uppercase-alpha|true|superscript|subscript|single|right|portrait|prevented|per-section|per-page|paragraph-divider|page-number|normal|none|no|lowercase-roman|lowercase-alpha|left|landscape|justified|itemize|italic|hidden|heading(-(all|[1-6]))?|false|end-of-section|end-of-page|end-of-document|decimal|continuous|chicago-style-manual|center|bold|before|auto|after|allowed)'
+      scope: constant.language.ulss
+  variable-definition:
+    - match: '(?=\$)'
+      push:
+        - meta_scope: meta.variable-definition.ulss
+        - match: '(\;)|(?=//)|$'
+          pop: true
+        - include: variable-identifier
+        - match: '='
+          scope: keyword.operator.ulss
+        - include: expression
+  variable-identifier:
+    - match: '\$[a-zA-Z][a-zA-Z0-9\-]*'
+      scope: variable.parameter.ulss
