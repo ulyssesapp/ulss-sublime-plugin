@@ -149,6 +149,7 @@ completions_by_selector = {
     "paragraph":            paragraph_profile_completions,
     "paragraph-divider":    dict(paragraph_profile_completions.items() + divider_completions.items()),
     "paragraph-figure":     paragraph_profile_completions,
+    "figure-caption":       paragraph_profile_completions,
 
     "heading-all":          paragraph_profile_completions,
     "heading-1":            paragraph_profile_completions,
