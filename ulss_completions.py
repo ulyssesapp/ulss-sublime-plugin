@@ -10,6 +10,8 @@ enumeration_pseudoclasses   = [":enumerator"]
 footnote_pseudoclasses      = [":anchor"]
 
 pseudoclasses_by_selector = {
+    "table-cell":       [":header-top-boundary", ":header-top", ":header-row-boundary", ":header-row", ":header-right-boundary", ":header-right", ":header-left-boundary", ":header-left", ":header-column-boundary", ":header-column", ":header-bottom-boundary", ":header-bottom", ":header", ":body"],
+
     "list-all":         element_pseudoclasses + enumeration_pseudoclasses,
     "list-ordered":     element_pseudoclasses + enumeration_pseudoclasses,
     "list-unordered":   element_pseudoclasses + enumeration_pseudoclasses,
@@ -80,6 +82,57 @@ paragraph_completions = {
     "tab-positions":        "[${1:10em}, ${2:20em}, ${3:30em}]",
     "tab-alignments":       "[${1:left}, ${2:center}, ${3:right}]",
     "hyphenation":          bool_snippet
+}
+
+line_style_options = ["solid", "space", "none"]
+
+table_completions = {
+    "border-style":             line_style_options,
+    "border-width":             length_snippet,
+    "border-color":             color_snippet,
+    
+    "border-left-style":        line_style_options,
+    "border-left-width":        length_snippet,
+    "border-left-color":        color_snippet,
+
+    "border-top-style":         line_style_options,
+    "border-top-width":         length_snippet,
+    "border-top-color":         color_snippet,
+
+    "border-right-style":       line_style_options,
+    "border-right-width":       length_snippet,
+    "border-right-color":       color_snippet,
+
+    "border-bottom-style":      line_style_options,
+    "border-bottom-width":      length_snippet,
+    "border-bottom-color":      color_snippet,
+
+    "padding-collapse":         bool_snippet,
+    "caption-placement":        ["before", "above"]
+}
+
+table_cell_completions {
+    "separator-style":          line_style_options,
+    "separator-color":          color_snippet,
+    "separator-width":          length_snippet,
+
+    "row-separator-style":      line_style_options,
+    "row-separator-color":      color_snippet,
+    "row-separator-width":      length_snippet,
+
+    "column-separator-style":   line_style_options,
+    "column-separator-color":   color_snippet,
+    "column-separator-width":   length_snippet,
+
+    "padding":                  length_snippet,
+    "padding-top":              length_snippet,           
+    "padding-left":             length_snippet,
+    "padding-bottom"            length_snippet,
+    "padding-right":            length_snippet,
+
+    "cell-color":               color_snippet,
+    "alternate-row-color":      color_snippet,
+    "alternate-column-color":   color_snippet
 }
 
 divider_completions = {
@@ -203,6 +256,9 @@ completions_by_selector = {
     "syntax-inserted":		element_completions,
     "syntax-changed":		element_completions,
     "syntax-ignored":		element_completions,
+
+    "table":                dict(paragraph_profile_completions.items() + table_cell_completions.items() + table_completions.items()),
+    "table-cell":           dict(paragraph_profile_completions.items() + table_cell_completions.items()),
 
     "ulysses-escape-character":     element_completions,
     "ulysses-escape":               element_completions,

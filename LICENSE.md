@@ -1,4 +1,4 @@
-Copyright (c) 2016 [The Soulmen GbR](mailto:mail@the-soulmen.com?subject=Feedback%20Ulysses%20Sublime%20Package)
+Copyright (c) 2022 [Ulysses GmbH & Co. KG](https://ulysses.app/contact)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

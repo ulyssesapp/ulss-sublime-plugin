@@ -2,9 +2,9 @@
 [![Total downloads via Package Control](https://img.shields.io/packagecontrol/dt/Ulysses%20Style%20Sheets.svg?style=flat-square)](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets)
 [![Monthly downloads via Package Control](https://img.shields.io/packagecontrol/dm/Ulysses%20Style%20Sheets.svg?style=flat-square)](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets)
 
-# [Sublime Text 2](https://www.sublimetext.com/2) Plugin for [Ulysses Style Sheets](http://www.ulysses.app/styles)
+# [Sublime Text](https://www.sublimetext.com/) Plugin for [Ulysses Style Sheets](http://www.ulysses.app/styles)
 
-This repository contains the [Ulysses Style Sheets](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets) plugin for syntax highlighting and autocompletion of [Ulysses Style Sheets](http://www.ulysses.app/styles) in [Sublime Text 2](https://www.sublimetext.com/2).
+This repository contains the [Ulysses Style Sheets](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets) plugin for syntax highlighting and autocompletion of [Ulysses Style Sheets](http://www.ulysses.app/styles) in [Sublime Text](https://www.sublimetext.com/).
 
 You may either download it directly or find it as the [`Ulysses Style Sheets`](https://packagecontrol.io/packages/Ulysses%20Style%20Sheets) package on [Package Control](https://packagecontrol.io).
 
@@ -27,6 +27,9 @@ If you are not using [Package Control](https://packagecontrol.io), please follow
 | [Sublime Text 2 dev](https://www.sublimetext.com/dev)  | :o: fully compatible |
 | [Sublime Text 3](https://www.sublimetext.com/3)        | :x: limited support  |
 | [Sublime Text 3 dev](https://www.sublimetext.com/3dev) | :x: limited support  |
+| [Sublime Text 4](https://www.sublimetext.com/4)        | :x: limited support  |
+| [Sublime Text 4 dev](https://www.sublimetext.com/4dev) | :x: limited support  |
+
 
 ## License
 
