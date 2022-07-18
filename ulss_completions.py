@@ -69,7 +69,7 @@ footnote_completions = {
 }
 
 paragraph_completions = {
-    "text-alignment":       ["left", "center", "right", "justify"],
+    "text-alignment":       ["left", "center", "right", "justify", "auto"],
     "margin-top":           length_snippet,
     "margin-left":          length_snippet,
     "margin-right":         length_snippet,
@@ -132,7 +132,9 @@ table_cell_completions {
 
     "cell-color":               color_snippet,
     "alternate-row-color":      color_snippet,
-    "alternate-column-color":   color_snippet
+    "alternate-column-color":   color_snippet,
+
+    "vertical-alignment":      ["top", "center", "bottom"]
 }
 
 divider_completions = {

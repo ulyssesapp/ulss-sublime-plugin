@@ -84,7 +84,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\:(right-page|left-page|last|header-top-boundary|header-top|header-row-boundary|header-row|header-right-boundary|header-right|header-left-boundary|header-left|header-column-boundary|header-column|header-bottom-boundary|header-bottom|header|first-page|first|enumerator|body|anchor)</string>
+					<string>\:(right-page|left-page|last-row|last-column|last|header-top-boundary|header-top|header-row-boundary|header-row|header-right-boundary|header-right|header-left-boundary|header-left|header-column-boundary|header-column|header-bottom-boundary|header-bottom|header|first-row|first-page|first-column|first|enumerator|colspan|body|anchor)</string>
 					<key>name</key>
 					<string>entity.other.attribute-name.pseudo-class</string>
 				</dict>
@@ -175,7 +175,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(visibility|underline-color|underline|two-sided|top-spacing|text-inset|text-alignment|tab-positions|tab-alignments|style-title|strikethrough-color|strikethrough|separator-width|separator-style|separator-color|section-break|row-separator-width|row-separator-style|row-separator-color|paragraph-divider|page-width|page-orientation|page-number-style|page-number-reset|page-number-format|page-inset-top|page-inset-outer|page-inset-inner|page-inset-bottom|page-height|page-break|page-binding|padding-top|padding-right|padding-left|padding-collapse|padding-bottom|padding|orphans-and-widows|margin-top|margin-right|margin-left|margin-bottom|locale|line-spacing|line-height|keep-with-following|itemization|item-spacing|hyphenation|footnote-visibility|footnote-style|footnote-placement|footnote-enumeration|font-weight|font-style|font-slant|font-size|font-family|font-color|first-line-indent|enumeration-style|enumeration-format|divider-width|divider-spacing|divider-position|divider-length|default-tab-interval|content|column-spacing-width|column-count|character-spacing|cell-color|column-separator-width|column-separator-style|column-separator-color|caption-placement|bottom-spacing|border-width|border-top-width|border-top-style|border-top-color|border-right-width|border-right-style|border-right-color|border-left-width|border-left-style|border-left-color|border-bottom-width|border-bottom-style|border-bottom-color|border-style|border-color|baseline-shift|background-color|anchor-inset|anchor-alignment|alternate-row-color|alternate-column-color)\b</string>
+					<string>\b(visibility|vertical-alignment|underline-color|underline|two-sided|top-spacing|text-inset|text-alignment|tab-positions|tab-alignments|style-title|strikethrough-color|strikethrough|separator-width|separator-style|separator-color|section-break|row-separator-width|row-separator-style|row-separator-color|paragraph-divider|page-width|page-orientation|page-number-style|page-number-reset|page-number-format|page-inset-top|page-inset-outer|page-inset-inner|page-inset-bottom|page-height|page-break|page-binding|padding-top|padding-right|padding-left|padding-collapse|padding-bottom|padding|orphans-and-widows|margin-top|margin-right|margin-left|margin-bottom|locale|line-spacing|line-height|keep-with-following|itemization|item-spacing|hyphenation|footnote-visibility|footnote-style|footnote-placement|footnote-enumeration|font-weight|font-style|font-slant|font-size|font-family|font-color|first-line-indent|enumeration-style|enumeration-format|divider-width|divider-spacing|divider-position|divider-length|default-tab-interval|content|column-spacing-width|column-count|character-spacing|cell-color|column-separator-width|column-separator-style|column-separator-color|caption-placement|bottom-spacing|border-width|border-top-width|border-top-style|border-top-color|border-right-width|border-right-style|border-right-color|border-left-width|border-left-style|border-left-color|border-bottom-width|border-bottom-style|border-bottom-color|border-style|border-color|baseline-shift|background-color|anchor-inset|anchor-alignment|alternate-row-color|alternate-column-color)\b</string>
 					<key>name</key>
 					<string>support.type.property-name.ulss</string>
 				</dict>
@@ -280,7 +280,7 @@
 		<key>symbolic-value</key>
 		<dict>
 			<key>match</key>
-			<string>(yes|visible|uppercase-roman|uppercase-alpha|true|superscript|subscript|space|solid|single|right|portrait|prevented|per-section|per-page|paragraph-divider|page-number|normal|none|no|lowercase-roman|lowercase-alpha|left|landscape|justified|itemize|italic|hidden|heading(-(all|[1-6]))?|false|end-of-section|end-of-page|end-of-document|decimal|continuous|chicago-style-manual|center|bold|before|auto|after|allowed)</string>
+			<string>(yes|visible|uppercase-roman|uppercase-alpha|true|top|superscript|subscript|space|solid|single|right|portrait|prevented|per-section|per-page|paragraph-divider|page-number|normal|none|no|lowercase-roman|lowercase-alpha|left|landscape|justified|itemize|italic|hidden|heading(-(all|[1-6]))?|false|end-of-section|end-of-page|end-of-document|decimal|continuous|chicago-style-manual|center|bottom|bold|before|auto|after|allowed)</string>
 			<key>name</key>
 			<string>constant.language.ulss</string>
 		</dict>
