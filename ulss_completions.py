@@ -209,22 +209,22 @@ document_settings_completions = {
     "baseline-grid-size":   length_snippet
 }
 
-paragraph_profile_completions = dict(element_completions.items() + paragraph_completions.items())
-list_profile_completions = dict(element_completions.items() + paragraph_completions.items() + itemized_group_completions.items())
+paragraph_profile_completions = dict(list(element_completions.items()) + list(paragraph_completions.items()))
+list_profile_completions = dict(list(element_completions.items()) + list(paragraph_completions.items()) + list(itemized_group_completions.items()))
 
 completions_by_selector = {
-    "table-of-contents":        dict(paragraph_profile_completions.items() + toc_item_completions.items() + toc_completions.items()),
-    "table-of-contents-item":   dict(paragraph_profile_completions.items() + toc_item_completions.items()),
+    "table-of-contents":        dict(list(paragraph_profile_completions.items()) + list(toc_item_completions.items()) + list(toc_completions.items())),
+    "table-of-contents-item":   dict(list(paragraph_profile_completions.items()) + list(toc_item_completions.items())),
 
     "document-settings":    document_settings_completions,
-    "area-header":          dict(paragraph_profile_completions.items() + header_completions.items()),
-    "area-footer":          dict(paragraph_profile_completions.items() + header_completions.items()),
-    "area-footnotes":       dict(paragraph_profile_completions.items() + footnote_area_completions.items()),
+    "area-header":          dict(list(paragraph_profile_completions.items()) + list(header_completions.items())),
+    "area-footer":          dict(list(paragraph_profile_completions.items()) + list(header_completions.items())),
+    "area-footnotes":       dict(list(paragraph_profile_completions.items()) + list(footnote_area_completions.items())),
 
     "defaults":             paragraph_profile_completions,
     
     "paragraph":            paragraph_profile_completions,
-    "paragraph-divider":    dict(paragraph_profile_completions.items() + divider_completions.items()),
+    "paragraph-divider":    dict(list(paragraph_profile_completions.items()) + list(divider_completions.items())),
     "paragraph-figure":     paragraph_profile_completions,
     "figure-caption":       paragraph_profile_completions,
 
@@ -255,10 +255,10 @@ completions_by_selector = {
     "inline-raw":           element_completions,
     "inline-strong":        element_completions,
 
-    "inline-footnote":      dict(element_completions.items() + footnote_completions.items()),
-    "inline-annotation":    dict(element_completions.items() + footnote_completions.items()),
+    "inline-footnote":      dict(list(element_completions.items()) + list(footnote_completions.items())),
+    "inline-annotation":    dict(list(element_completions.items()) + list(footnote_completions.items())),
 
-    "media-image":          dict(element_completions.items() + media_completions.items()),
+    "media-image":          dict(list(element_completions.items()) + list(media_completions.items())),
 
     "syntax-all":			element_completions,
     "syntax-none":			element_completions,
@@ -281,8 +281,8 @@ completions_by_selector = {
     "syntax-changed":		element_completions,
     "syntax-ignored":		element_completions,
 
-    "table":                dict(paragraph_profile_completions.items() + table_cell_completions.items() + table_completions.items()),
-    "table-cell":           dict(paragraph_profile_completions.items() + table_cell_completions.items()),
+    "table":                dict(list(paragraph_profile_completions.items()) + list(table_cell_completions.items()) + list(table_completions.items())),
+    "table-cell":           dict(list(paragraph_profile_completions.items()) + list(table_cell_completions.items())),
 
     "ulysses-escape-character":     element_completions,
     "ulysses-escape":               element_completions,
@@ -291,12 +291,12 @@ completions_by_selector = {
 }
 
 # All completions that may apply to content
-fallback_completions = dict(element_completions.items() + media_completions.items() + paragraph_completions.items() + divider_completions.items() + itemized_group_completions.items())
+fallback_completions = dict(list(element_completions.items()) + list(media_completions.items()) + list(paragraph_completions.items()) + list(divider_completions.items()) + list(itemized_group_completions.items()))
 
 #
 # Selector completion
 #
-all_selectors = sorted(completions_by_selector.keys() + ["@${0:Mixin}"])
+all_selectors = sorted(list(completions_by_selector.keys()) + ["@${0:Mixin}"])
 
 
 #
@@ -431,8 +431,8 @@ class UlyssesStyleSheetCompletions(sublime_plugin.EventListener):
     def autocomplete_style_keys(self, completions):
         suggestions = list()
 
-        for key, value in sorted(completions.iteritems()):
-            suggested_key = (key + ":") + "".ljust(((24 - (len(key) + 1)) / 4) + 1, '\t')
+        for key, value in sorted(getattr(completions, 'iteritems', completions.items)()):
+            suggested_key = (key + ":") + "".ljust(((24 - (len(key) + 1)) // 4) + 1, '\t')
 
             if (isinstance(value, str)):
                 suggestions.append((key, suggested_key + value))
