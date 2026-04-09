@@ -8,6 +8,7 @@ element_pseudoclasses       = [":first", ":last"]
 header_pseudoclasses        = [":first-page", ":left-page", ":right-page"]
 enumeration_pseudoclasses   = [":enumerator"]
 footnote_pseudoclasses      = [":anchor"]
+toc_item_pseudoclasses      = [":heading-1", ":heading-2", ":heading-3", ":heading-4", ":heading-5", ":heading-6"]
 
 pseudoclasses_by_selector = {
     "table-cell":       [":header-top-boundary", ":header-top", ":header-row-boundary", ":header-row", ":header-right-boundary", ":header-right", ":header-left-boundary", ":header-left", ":header-column-boundary", ":header-column", ":header-bottom-boundary", ":header-bottom", ":header", ":body"],
@@ -21,6 +22,8 @@ pseudoclasses_by_selector = {
 
     "area-header":      header_pseudoclasses,
     "area-footer":      header_pseudoclasses,
+
+    "table-of-contents-item":   toc_item_pseudoclasses,
 
     "defaults":         []
 }
@@ -137,6 +140,12 @@ table_cell_completions {
     "vertical-alignment":      ["top", "center", "bottom"]
 }
 
+toc_completions = {
+    "page-number-position": ["none", "trailing-column", "after-em-space", "after-em-dash"],
+    "trailing-column-fill": ["dots", "dense-dots", "space", "none"],
+    "nesting-indentation":  length_snippet
+}
+
 divider_completions = {
     "content":              "\"${1:Content of divider}\""
 }
@@ -194,6 +203,8 @@ paragraph_profile_completions = dict(element_completions.items() + paragraph_com
 list_profile_completions = dict(element_completions.items() + paragraph_completions.items() + itemized_group_completions.items())
 
 completions_by_selector = {
+    "table-of-contents":    dict(paragraph_profile_completions.items() + toc_completions.items()),
+
     "document-settings":    document_settings_completions,
     "area-header":          dict(paragraph_profile_completions.items() + header_completions.items()),
     "area-footer":          dict(paragraph_profile_completions.items() + header_completions.items()),
