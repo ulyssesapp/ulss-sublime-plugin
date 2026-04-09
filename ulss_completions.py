@@ -60,6 +60,9 @@ element_completions = {
 
     "visibility":           ["visible", "hidden"],
     
+    "capitalization":       ["none", "all-caps", "small-caps", "all-small-caps"],
+    "ligatures":            ["off", "common", "all"],
+    "numeral-style":        ["default", "old-style", "lining"]
 }
 
 media_completions = {
@@ -84,7 +87,9 @@ paragraph_completions = {
     "default-tab-interval": length_snippet,
     "tab-positions":        "[${1:10em}, ${2:20em}, ${3:30em}]",
     "tab-alignments":       "[${1:left}, ${2:center}, ${3:right}]",
-    "hyphenation":          bool_snippet
+    "hyphenation":          bool_snippet,
+    "baseline-align":       bool_snippet,
+    "colspan":              bool_snippet
 }
 
 line_style_options = ["solid", "space", "none"]
@@ -114,7 +119,7 @@ table_completions = {
     "caption-placement":        ["before", "above"]
 }
 
-table_cell_completions {
+table_cell_completions = {
     "separator-style":          line_style_options,
     "separator-color":          color_snippet,
     "separator-width":          length_snippet,
@@ -130,7 +135,7 @@ table_cell_completions {
     "padding":                  length_snippet,
     "padding-top":              length_snippet,           
     "padding-left":             length_snippet,
-    "padding-bottom"            length_snippet,
+    "padding-bottom":           length_snippet,
     "padding-right":            length_snippet,
 
     "cell-color":               color_snippet,
@@ -140,9 +145,12 @@ table_cell_completions {
     "vertical-alignment":      ["top", "center", "bottom"]
 }
 
-toc_completions = {
+toc_item_completions = {
     "page-number-position": ["none", "trailing-column", "after-em-space", "after-em-dash"],
-    "trailing-column-fill": ["dots", "dense-dots", "space", "none"],
+    "trailing-column-fill": ["dots", "dense-dots", "space", "none"]
+}
+
+toc_completions = {
     "nesting-indentation":  length_snippet
 }
 
@@ -196,14 +204,17 @@ document_settings_completions = {
     "footnote-placement":   ["end-of-page", "end-of-section", "end-of-document"],
     "footnote-enumeration": ["per-page", "per-section", "continuous"],
 
-    "locale":               "\"${1:en}\""
+    "locale":               "\"${1:en}\"",
+
+    "baseline-grid-size":   length_snippet
 }
 
 paragraph_profile_completions = dict(element_completions.items() + paragraph_completions.items())
 list_profile_completions = dict(element_completions.items() + paragraph_completions.items() + itemized_group_completions.items())
 
 completions_by_selector = {
-    "table-of-contents":    dict(paragraph_profile_completions.items() + toc_completions.items()),
+    "table-of-contents":        dict(paragraph_profile_completions.items() + toc_item_completions.items() + toc_completions.items()),
+    "table-of-contents-item":   dict(paragraph_profile_completions.items() + toc_item_completions.items()),
 
     "document-settings":    document_settings_completions,
     "area-header":          dict(paragraph_profile_completions.items() + header_completions.items()),
