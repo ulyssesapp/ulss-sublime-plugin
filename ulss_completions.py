@@ -8,6 +8,7 @@ element_pseudoclasses       = [":first", ":last"]
 header_pseudoclasses        = [":first-page", ":left-page", ":right-page"]
 enumeration_pseudoclasses   = [":enumerator"]
 footnote_pseudoclasses      = [":anchor"]
+toc_item_pseudoclasses      = [":heading-1", ":heading-2", ":heading-3", ":heading-4", ":heading-5", ":heading-6"]
 
 pseudoclasses_by_selector = {
     "table-cell":       [":header-top-boundary", ":header-top", ":header-row-boundary", ":header-row", ":header-right-boundary", ":header-right", ":header-left-boundary", ":header-left", ":header-column-boundary", ":header-column", ":header-bottom-boundary", ":header-bottom", ":header", ":body"],
@@ -21,6 +22,8 @@ pseudoclasses_by_selector = {
 
     "area-header":      header_pseudoclasses,
     "area-footer":      header_pseudoclasses,
+
+    "table-of-contents-item":   toc_item_pseudoclasses,
 
     "defaults":         []
 }
@@ -57,6 +60,9 @@ element_completions = {
 
     "visibility":           ["visible", "hidden"],
     
+    "capitalization":       ["none", "all-caps", "small-caps", "all-small-caps"],
+    "ligatures":            ["off", "common", "all"],
+    "numeral-style":        ["default", "old-style", "lining"]
 }
 
 media_completions = {
@@ -81,7 +87,9 @@ paragraph_completions = {
     "default-tab-interval": length_snippet,
     "tab-positions":        "[${1:10em}, ${2:20em}, ${3:30em}]",
     "tab-alignments":       "[${1:left}, ${2:center}, ${3:right}]",
-    "hyphenation":          bool_snippet
+    "hyphenation":          bool_snippet,
+    "baseline-align":       bool_snippet,
+    "colspan":              bool_snippet
 }
 
 line_style_options = ["solid", "space", "none"]
@@ -111,7 +119,7 @@ table_completions = {
     "caption-placement":        ["before", "above"]
 }
 
-table_cell_completions {
+table_cell_completions = {
     "separator-style":          line_style_options,
     "separator-color":          color_snippet,
     "separator-width":          length_snippet,
@@ -127,7 +135,7 @@ table_cell_completions {
     "padding":                  length_snippet,
     "padding-top":              length_snippet,           
     "padding-left":             length_snippet,
-    "padding-bottom"            length_snippet,
+    "padding-bottom":           length_snippet,
     "padding-right":            length_snippet,
 
     "cell-color":               color_snippet,
@@ -135,6 +143,15 @@ table_cell_completions {
     "alternate-column-color":   color_snippet,
 
     "vertical-alignment":      ["top", "center", "bottom"]
+}
+
+toc_item_completions = {
+    "page-number-position": ["none", "trailing-column", "after-em-space", "after-em-dash"],
+    "trailing-column-fill": ["dots", "dense-dots", "space", "none"]
+}
+
+toc_completions = {
+    "nesting-indentation":  length_snippet
 }
 
 divider_completions = {
@@ -187,22 +204,27 @@ document_settings_completions = {
     "footnote-placement":   ["end-of-page", "end-of-section", "end-of-document"],
     "footnote-enumeration": ["per-page", "per-section", "continuous"],
 
-    "locale":               "\"${1:en}\""
+    "locale":               "\"${1:en}\"",
+
+    "baseline-grid-size":   length_snippet
 }
 
-paragraph_profile_completions = dict(element_completions.items() + paragraph_completions.items())
-list_profile_completions = dict(element_completions.items() + paragraph_completions.items() + itemized_group_completions.items())
+paragraph_profile_completions = dict(list(element_completions.items()) + list(paragraph_completions.items()))
+list_profile_completions = dict(list(element_completions.items()) + list(paragraph_completions.items()) + list(itemized_group_completions.items()))
 
 completions_by_selector = {
+    "table-of-contents":        dict(list(paragraph_profile_completions.items()) + list(toc_item_completions.items()) + list(toc_completions.items())),
+    "table-of-contents-item":   dict(list(paragraph_profile_completions.items()) + list(toc_item_completions.items())),
+
     "document-settings":    document_settings_completions,
-    "area-header":          dict(paragraph_profile_completions.items() + header_completions.items()),
-    "area-footer":          dict(paragraph_profile_completions.items() + header_completions.items()),
-    "area-footnotes":       dict(paragraph_profile_completions.items() + footnote_area_completions.items()),
+    "area-header":          dict(list(paragraph_profile_completions.items()) + list(header_completions.items())),
+    "area-footer":          dict(list(paragraph_profile_completions.items()) + list(header_completions.items())),
+    "area-footnotes":       dict(list(paragraph_profile_completions.items()) + list(footnote_area_completions.items())),
 
     "defaults":             paragraph_profile_completions,
     
     "paragraph":            paragraph_profile_completions,
-    "paragraph-divider":    dict(paragraph_profile_completions.items() + divider_completions.items()),
+    "paragraph-divider":    dict(list(paragraph_profile_completions.items()) + list(divider_completions.items())),
     "paragraph-figure":     paragraph_profile_completions,
     "figure-caption":       paragraph_profile_completions,
 
@@ -233,10 +255,10 @@ completions_by_selector = {
     "inline-raw":           element_completions,
     "inline-strong":        element_completions,
 
-    "inline-footnote":      dict(element_completions.items() + footnote_completions.items()),
-    "inline-annotation":    dict(element_completions.items() + footnote_completions.items()),
+    "inline-footnote":      dict(list(element_completions.items()) + list(footnote_completions.items())),
+    "inline-annotation":    dict(list(element_completions.items()) + list(footnote_completions.items())),
 
-    "media-image":          dict(element_completions.items() + media_completions.items()),
+    "media-image":          dict(list(element_completions.items()) + list(media_completions.items())),
 
     "syntax-all":			element_completions,
     "syntax-none":			element_completions,
@@ -259,8 +281,8 @@ completions_by_selector = {
     "syntax-changed":		element_completions,
     "syntax-ignored":		element_completions,
 
-    "table":                dict(paragraph_profile_completions.items() + table_cell_completions.items() + table_completions.items()),
-    "table-cell":           dict(paragraph_profile_completions.items() + table_cell_completions.items()),
+    "table":                dict(list(paragraph_profile_completions.items()) + list(table_cell_completions.items()) + list(table_completions.items())),
+    "table-cell":           dict(list(paragraph_profile_completions.items()) + list(table_cell_completions.items())),
 
     "ulysses-escape-character":     element_completions,
     "ulysses-escape":               element_completions,
@@ -269,12 +291,12 @@ completions_by_selector = {
 }
 
 # All completions that may apply to content
-fallback_completions = dict(element_completions.items() + media_completions.items() + paragraph_completions.items() + divider_completions.items() + itemized_group_completions.items())
+fallback_completions = dict(list(element_completions.items()) + list(media_completions.items()) + list(paragraph_completions.items()) + list(divider_completions.items()) + list(itemized_group_completions.items()))
 
 #
 # Selector completion
 #
-all_selectors = sorted(completions_by_selector.keys() + ["@${0:Mixin}"])
+all_selectors = sorted(list(completions_by_selector.keys()) + ["@${0:Mixin}"])
 
 
 #
@@ -409,8 +431,8 @@ class UlyssesStyleSheetCompletions(sublime_plugin.EventListener):
     def autocomplete_style_keys(self, completions):
         suggestions = list()
 
-        for key, value in sorted(completions.iteritems()):
-            suggested_key = (key + ":") + "".ljust(((24 - (len(key) + 1)) / 4) + 1, '\t')
+        for key, value in sorted(getattr(completions, 'iteritems', completions.items)()):
+            suggested_key = (key + ":") + "".ljust(((24 - (len(key) + 1)) // 4) + 1, '\t')
 
             if (isinstance(value, str)):
                 suggestions.append((key, suggested_key + value))
