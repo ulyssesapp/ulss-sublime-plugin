@@ -55,7 +55,7 @@ element_completions = {
     "underline":            ["single", "none"],
     "underline-color":      color_snippet,
 
-    "strikethrough":        ["signle", "none"],
+    "strikethrough":        ["single", "none"],
     "strikethrough-color":  color_snippet,
 
     "visibility":           ["visible", "hidden"],
@@ -71,7 +71,7 @@ media_completions = {
 }
 
 footnote_completions = {
-    "footnote_visibility":  ["visible", "hidden"], 
+    "footnote-visibility":  ["visible", "hidden"],
 }
 
 paragraph_completions = {
@@ -79,7 +79,7 @@ paragraph_completions = {
     "margin-top":           length_snippet,
     "margin-left":          length_snippet,
     "margin-right":         length_snippet,
-    "marign-bottom":        length_snippet,
+    "margin-bottom":        length_snippet,
     "line-height":          ("$1", ["${1:auto}"] + length_options),
     "first-line-indent":    length_snippet,
     "page-break":           ["none", "after", "before"],
@@ -162,7 +162,7 @@ itemized_group_completions = {
     "itemization":          ["itemize", "none"],
     "item-spacing":         length_snippet,
     "text-inset":           length_snippet,
-    "enumeration_format":   "\"${1:%p}\"",
+    "enumeration-format":   "\"${1:%p}\"",
     "enumeration-style":    ["decimal", "lowercase-roman", "uppercase-roman", "lowercase-alpha", "uppercase-alpha"]
 }
 
